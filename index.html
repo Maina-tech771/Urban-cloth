@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Urban Style Clothing | Affordable Men's Wear in Kenya</title>
+<meta name="description" content="Affordable, trendy men's T-shirts, jeans, hoodies and more. Pay with M-Pesa. Delivery across Kenya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14213D;--denim:#1F3A68;--sun:#FFC72C;--chalk:#F5F7FA;--line:#D5DBE6;--ok:#12805C;--bad:#B3261E}
+*{box-sizing:border-box}
+body{margin:0;font-family:Archivo,system-ui,sans-serif;color:var(--ink);background:var(--chalk);line-height:1.5}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.top{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;background:var(--ink);color:#fff}
+.logo{font-weight:900;font-size:1.3rem;letter-spacing:.04em;text-decoration:none}
+nav{display:flex;gap:22px}
+nav a{text-decoration:none;font-weight:600}
+nav a:hover{color:var(--sun)}
+.cartlink span{background:var(--sun);color:var(--ink);border-radius:99px;padding:1px 8px;font-size:.85rem;font-weight:800}
+main{min-height:70vh;padding:0 5vw 60px;max-width:1200px;margin:auto}
+footer{padding:24px 5vw;text-align:center;font-size:.85rem;border-top:1px solid var(--line)}
+h1,h2{font-weight:900;line-height:1.05;margin:0 0 .4em}
+.hero{background:var(--denim);color:#fff;margin:0 -5vw;padding:64px 5vw;display:grid;gap:28px;grid-template-columns:1.3fr 1fr;align-items:center}
+.hero h1{font-size:clamp(2.4rem,7vw,5rem);max-width:12ch}
+.hero p{font-size:1.15rem;max-width:44ch}
+.hero .stack{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hero .stack span{background:var(--sun);color:var(--ink);border-radius:10px;aspect-ratio:1;display:grid;place-items:center;font-size:3.4rem}
+.hero .stack span:nth-child(2){background:#fff}.hero .stack span:nth-child(3){background:#8FB1E8}
+.btn{display:inline-block;border:0;cursor:pointer;background:var(--sun);color:var(--ink);font:800 1rem Archivo,sans-serif;padding:13px 24px;border-radius:8px;text-decoration:none}
+.btn:hover{filter:brightness(.95)}
+.btn.dark{background:var(--ink);color:#fff}
+.btn.ghost{background:transparent;border:2px solid var(--ink)}
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;padding:32px 0}
+.perks div{border-left:4px solid var(--sun);padding-left:12px}
+.perks b{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.thumb{aspect-ratio:1;display:grid;place-items:center;font-size:4.5rem;text-decoration:none}
+.card .body{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{margin:0;font-size:1.05rem}
+.price{font-weight:800;font-size:1.1rem}
+.muted{color:#5B6785;font-size:.9rem}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0}
+.filters button{border:2px solid var(--ink);background:#fff;border-radius:99px;padding:6px 16px;font:600 .95rem Archivo,sans-serif;cursor:pointer}
+.filters button[aria-pressed=true]{background:var(--ink);color:#fff}
+.detail{display:grid;grid-template-columns:1fr 1fr;gap:36px;padding-top:32px}
+.detail .thumb{border-radius:12px;font-size:9rem}
+.sizes{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 20px}
+.sizes button{width:48px;height:44px;border:2px solid var(--ink);background:#fff;border-radius:8px;font:700 1rem Archivo,sans-serif;cursor:pointer}
+.sizes button[aria-pressed=true]{background:var(--ink);color:#fff}
+.crumbs{padding-top:24px;font-size:.9rem}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line)}
+th,td{padding:12px;text-align:left;border-bottom:1px solid var(--line)}
+td button{border:1px solid var(--ink);background:#fff;border-radius:6px;width:30px;height:30px;cursor:pointer;font-weight:800}
+.summary{margin-top:24px;margin-left:auto;max-width:380px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px}
+.summary p{display:flex;justify-content:space-between;margin:6px 0}
+.summary .total{font-weight:900;font-size:1.2rem;border-top:2px solid var(--ink);padding-top:10px}
+.checkout{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;padding-top:24px;align-items:start}
+label{display:block;font-weight:600;margin:14px 0 4px}
+input,select{width:100%;padding:11px;border:1px solid #8590A8;border-radius:8px;font:1rem Archivo,sans-serif;background:#fff}
+.pay{display:grid;gap:8px;margin-top:6px}
+.pay label{display:flex;gap:10px;align-items:center;font-weight:600;margin:0;border:1px solid var(--line);background:#fff;padding:10px;border-radius:8px}
+.pay input{width:auto}
+.err{color:var(--bad);font-size:.9rem;min-height:1.2em}
+.ok{color:var(--ok);font-weight:700}
+.done{max-width:560px;margin:60px auto;text-align:center}
+.done .tick{font-size:4rem}
+.mpesa{background:#fff;border:2px dashed var(--ok);border-radius:10px;padding:14px;margin:18px 0;text-align:left}
+@media(max-width:760px){.hero,.detail,.checkout{grid-template-columns:1fr}.hero .stack{display:none}.detail .thumb{font-size:6rem}}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+.top{flex-wrap:wrap;gap:8px}nav{flex-wrap:wrap;gap:14px;align-items:center}
+.linkbtn{background:none;border:0;color:#fff;font:600 1rem Archivo,sans-serif;cursor:pointer;margin-left:10px;text-decoration:underline}
+.thumb{position:relative;overflow:hidden;font-size:0}
+.thumb svg,.thumb img{position:absolute;inset:0;width:100%;height:100%}
+.thumb img{object-fit:cover}
+.hero .stack span{overflow:hidden}.hero .stack span svg{width:100%;height:100%;display:block}
+footer{background:var(--ink);color:#fff;text-align:left;border:0;padding:40px 5vw 20px;font-size:.95rem}
+footer a{color:#fff}
+.foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px;max-width:1200px;margin:auto}
+.foot p{margin:6px 0}
+.loc{display:inline-block;background:var(--sun);color:var(--ink);font-weight:800;padding:7px 14px;border-radius:6px;text-decoration:none}
+.fine{text-align:center;margin-top:28px;font-size:.8rem;opacity:.75}
+.auth{display:grid;grid-template-columns:1fr 1fr;gap:32px;padding-top:16px}
+.auth form{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px}
+.reviews{padding-top:40px;max-width:760px}
+.stars{color:#A86400;letter-spacing:1px;font-weight:700}.stars small{color:#5B6785;font-weight:600;letter-spacing:0}
+.stars.big{font-size:1.4rem}
+.rev{border-bottom:1px solid var(--line);padding:12px 0}
+.rate-in button{background:none;border:0;font-size:2rem;color:#A86400;cursor:pointer;padding:0 2px}
+textarea{width:100%;padding:11px;border:1px solid #8590A8;border-radius:8px;font:1rem Archivo,sans-serif}
+@media(max-width:760px){.auth{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="#/">URBAN STYLE</a>
+  <nav>
+    <a href="#/">Home</a>
+    <a href="#/products">Products</a>
+    <a href="#/feedback">★ Feedback</a>
+    <a href="#/cart" class="cartlink">Cart <span id="count">0</span></a>
+    <span id="auth"></span>
+  </nav>
+</header>
+<main id="app" tabindex="-1"></main>
+<footer>
+  <div class="foot">
+    <div><b>Urban Style Official</b><p>Affordable, trendy men's wear for students and young professionals across Kenya.</p></div>
+    <div><b>Visit us</b><p><a class="loc" href="https://www.google.com/maps/search/?api=1&query=Kasongo+Avenue" target="_blank" rel="noopener">📍 Kasongo Avenue</a></p><p>Pay with M-Pesa, card or cash on delivery (Nairobi).</p></div>
+    <div><b>Follow Urban Style Official</b>
+      <p><a href="https://www.tiktok.com/@urbanstyleofficial" target="_blank" rel="noopener">TikTok: @urbanstyleofficial</a></p>
+      <p><a href="https://www.instagram.com/urbanstyleofficial" target="_blank" rel="noopener">Instagram: @urbanstyleofficial</a></p>
+      <p><a href="https://www.facebook.com/urbanstyleofficial" target="_blank" rel="noopener">Facebook: Urban Style Official</a></p></div>
+  </div>
+  <p class="fine">Urban Style Clothing: course prototype. Products and payments are mock only.</p>
+</footer>
+<script>
+// Urban Style Clothing: front-end prototype (Home > Products > Product > Cart > Checkout).
+// Mock data only. No real payments are processed.
+const PRODUCTS = [
+  {id:1,name:"Classic Crew Tee",cat:"T-shirts",price:800,icon:"👕",bg:"#FFC72C",sizes:["S","M","L","XL"],desc:"Soft 100% cotton tee with a relaxed campus fit."},
+  {id:2,name:"Graphic Street Tee",cat:"T-shirts",price:950,icon:"👕",bg:"#8FB1E8",sizes:["S","M","L","XL"],desc:"Bold print on a breathable cotton tee."},
+  {id:3,name:"Oxford Casual Shirt",cat:"Shirts",price:1400,icon:"👔",bg:"#E4E9F2",sizes:["M","L","XL"],desc:"Smart-casual button-up for class or the office."},
+  {id:4,name:"Slim Fit Jeans",cat:"Jeans",price:1800,icon:"👖",bg:"#1F3A68",sizes:["30","32","34","36"],desc:"Stretch denim, slim cut, all-day comfort."},
+  {id:5,name:"Straight Leg Jeans",cat:"Jeans",price:2000,icon:"👖",bg:"#5B7DB1",sizes:["30","32","34","36"],desc:"Classic straight fit in a dark wash."},
+  {id:6,name:"Chino Trousers",cat:"Trousers",price:1700,icon:"👖",bg:"#C9B58A",sizes:["30","32","34","36"],desc:"Clean chinos that dress up any fit."},
+  {id:7,name:"Everyday Hoodie",cat:"Hoodies",price:1500,icon:"🧥",bg:"#14213D",sizes:["S","M","L","XL"],desc:"Fleece-lined hoodie for cool Nairobi evenings."},
+  {id:8,name:"Zip Bomber Jacket",cat:"Jackets",price:2800,icon:"🧥",bg:"#3A5A40",sizes:["M","L","XL"],desc:"Lightweight bomber with ribbed cuffs."},
+  {id:9,name:"Snapback Cap",cat:"Accessories",price:600,icon:"🧢",bg:"#FF8C42",sizes:["One size"],desc:"Adjustable snapback with embroidered logo."}
+];
+const FREE_DELIVERY_OVER = 3000, STUDENT_CODE = "STUDENT15";
+const $ = s => document.querySelector(s);
+const kes = n => "KSh " + n.toLocaleString("en-KE");
+const find = id => PRODUCTS.find(p => p.id === +id);
+
+// ---- product pictures: shaded SVG garments. Drop real photos in an "images" folder
+// named product-1.jpg ... product-9.jpg and they automatically replace these. ----
+const LOOK={1:{type:"tee",color:"#E3B02B",print:"US"},2:{type:"tee",color:"#6F93D1",print:"URBAN"},3:{type:"shirt",color:"#B9CCE8"},4:{type:"jeans",color:"#1F3A68",stitch:1},5:{type:"jeans",color:"#4D6FA3",stitch:1},6:{type:"trousers",color:"#BFA879"},7:{type:"hoodie",color:"#1E2A47"},8:{type:"bomber",color:"#3A5A40"},9:{type:"cap",color:"#D9692B"}};
+PRODUCTS.forEach(p=>Object.assign(p,LOOK[p.id]));
+let gid=0;
+const shade=(h,a)=>{const n=parseInt(h.slice(1),16);const f=v=>Math.max(0,Math.min(255,Math.round(a>0?v+(255-v)*a:v*(1+a))));return "#"+[n>>16,(n>>8)&255,n&255].map(f).map(v=>v.toString(16).padStart(2,"0")).join("");};
+function art(p){
+  const k="g"+(++gid), c=p.color, d=shade(c,-.3), l=shade(c,.22), F=`url(#${k}f)`;
+  const fold=`stroke="#000" stroke-opacity=".13" fill="none" stroke-width="1.6" stroke-linecap="round"`;
+  const tee=`<path d="M60 40L85 30Q100 48 115 30L140 40L176 72L158 96L140 83V170H60V83L42 96L24 72Z" fill="${F}"/>
+   <path d="M85 30Q100 48 115 30Q100 40 85 30Z" fill="${d}"/>
+   <path d="M70 110Q78 130 72 160M130 105Q122 128 128 158M62 83Q70 90 60 100" ${fold}/>
+   ${p.print?`<text x="100" y="108" text-anchor="middle" font-family="Archivo,Arial" font-weight="900" font-size="${p.print.length>2?15:20}" fill="${p.print==="US"?d:"#fff"}">${p.print}</text>`:""}`;
+  const shirt=`<path d="M60 40L85 30Q100 48 115 30L140 40L180 132L162 138L140 82V172H60V82L38 138L20 132Z" fill="${F}"/>
+   <path d="M85 30L100 58L90 64L76 44ZM115 30L100 58L110 64L124 44Z" fill="${shade(c,.55)}"/>
+   <path d="M100 58V172M70 120Q76 140 70 165M130 120Q124 140 130 165" ${fold}/>
+   ${[78,98,118,138,158].map(y=>`<circle cx="100" cy="${y}" r="2.2" fill="#fff" opacity=".9"/>`).join("")}`;
+  const st=p.stitch?`stroke="#E0A93B" stroke-width="1.2" stroke-dasharray="3 2" fill="none"`:fold;
+  const legs=`<path d="M62 26H138L148 176H106L100 74L94 176H52Z" fill="${F}"/>
+   <rect x="62" y="26" width="76" height="11" fill="${d}" opacity=".85"/>
+   <circle cx="100" cy="31" r="2.6" fill="${p.stitch?"#C98A2B":l}"/>
+   <path d="M66 37Q80 60 95 42M134 37Q120 60 105 42M100 37V72" ${st}/>
+   <path d="M72 100Q70 140 66 170M128 100Q130 140 134 170" ${fold}/>
+   <ellipse cx="78" cy="110" rx="9" ry="22" fill="#fff" opacity=".1"/><ellipse cx="122" cy="110" rx="9" ry="22" fill="#fff" opacity=".1"/>`;
+  const hoodie=`<path d="M55 58L80 42H120L145 58L186 142L166 150L145 102V172H55V102L34 150L14 142Z" fill="${F}"/>
+   <path d="M72 44Q100 4 128 44Q100 66 72 44Z" fill="${d}"/><path d="M82 46Q100 22 118 46Q100 58 82 46Z" fill="${shade(c,-.5)}"/>
+   <path d="M92 60V88M108 60V88" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".85"/>
+   <path d="M68 128H132L140 162H60Z" fill="${d}" opacity=".55"/>
+   <path d="M64 100Q70 118 62 126M136 100Q130 118 138 126" ${fold}/>`;
+  const bomber=`<path d="M58 46L84 36H116L142 46L184 138L164 146L142 96V168H58V96L36 146L16 138Z" fill="${F}"/>
+   <path d="M82 36Q100 56 118 36L122 50Q100 68 78 50Z" fill="${d}"/>
+   <rect x="58" y="158" width="84" height="12" fill="${d}"/>
+   <path d="M100 58V170" stroke="${l}" stroke-width="2" stroke-dasharray="2 2"/>
+   <path d="M70 130L82 118M130 130L118 118" ${fold}/>
+   <path d="M26 132L40 140M174 132L160 140" stroke="${d}" stroke-width="7"/>`;
+  const cap=`<path d="M46 124Q44 54 100 54Q156 54 154 124Z" fill="${F}"/>
+   <path d="M38 124Q100 108 168 128Q176 146 118 150Q60 152 38 124Z" fill="${d}"/>
+   <circle cx="100" cy="55" r="4" fill="${l}"/>
+   <path d="M100 58Q86 90 82 122M100 58Q114 90 118 122" ${fold}/>
+   <text x="100" y="100" text-anchor="middle" font-family="Archivo,Arial" font-weight="900" font-size="15" fill="#fff">US</text>`;
+  const body={tee,shirt,jeans:legs,trousers:legs,hoodie,bomber,cap}[p.type]||"";
+  return `<svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs>
+   <radialGradient id="${k}b" cx=".5" cy=".4" r=".8"><stop offset="0" stop-color="#F7F8FA"/><stop offset="1" stop-color="#CDD3DD"/></radialGradient>
+   <linearGradient id="${k}f" x1="0" x2="1"><stop offset="0" stop-color="${d}"/><stop offset=".38" stop-color="${l}"/><stop offset=".7" stop-color="${c}"/><stop offset="1" stop-color="${d}"/></linearGradient>
+   <filter id="${k}s" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="5" stdDeviation="4" flood-opacity=".28"/></filter></defs>
+   <rect width="200" height="200" fill="url(#${k}b)"/><ellipse cx="100" cy="183" rx="58" ry="5" fill="#000" opacity=".15"/>
+   <g filter="url(#${k}s)">${body}</g></svg>`;
+}
+const photo = p => art(p) + `<img src="images/product-${p.id}.jpg" alt="${p.name}" loading="lazy" onerror="this.remove()">`;
+
+// ---- helpers, accounts (demo only: stored in this browser, not on a server) ----
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const load=(k,d)=>{try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v;}catch(e){return d;}};
+const put=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}};
+const hp=s=>{let h=5381;for(const ch of s)h=((h<<5)+h+ch.charCodeAt(0))>>>0;return h.toString(36);}; // demo hash only
+let user=load("usc-user",null);
+function updateNav(){
+  $("#auth").innerHTML=user?`<span>Hi, ${esc(user.name.split(" ")[0])}</span><button class="linkbtn" id="out">Log out</button>`:`<a href="#/login">Log in</a>`;
+  const o=$("#out"); if(o) o.onclick=()=>{user=null;put("usc-user",null);updateNav();location.hash="#/";render();};
+}
+
+// ---- cart (saved in the browser) ----
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem("usc-cart")) || []; } catch(e) {}
+let promo = false;
+const save = () => { try { localStorage.setItem("usc-cart", JSON.stringify(cart)); } catch(e) {} $("#count").textContent = cart.reduce((s,i)=>s+i.qty,0); };
+function addToCart(id,size){
+  const l = cart.find(i=>i.id===id && i.size===size);
+  l ? l.qty++ : cart.push({id,size,qty:1});
+  save();
+}
+function totals(town="Nairobi"){
+  const sub = cart.reduce((s,i)=>s+find(i.id).price*i.qty,0);
+  const discount = promo ? Math.round(sub*0.15) : 0;
+  const after = sub - discount;
+  const delivery = !cart.length ? 0 : sub >= FREE_DELIVERY_OVER ? 0 : town==="Nairobi" ? 200 : 350;
+  return {sub,discount,delivery,total:after+delivery};
+}
+
+// ---- views ----
+const tile = p => `<a class="thumb" href="#/product/${p.id}" aria-label="${p.name}">${photo(p)}</a>`;
+const card = p => `<article class="card">${tile(p)}<div class="body"><span class="muted">${p.cat}</span><h3>${p.name}</h3>${rate(p.id)}<span class="price">${kes(p.price)}</span><a class="btn dark" href="#/product/${p.id}">View item</a></div></article>`;
+
+function home(){
+  return `<section class="hero"><div><h1>Fresh fits. Friendly prices.</h1>
+  <p>Trendy men's wear for students and young professionals. Pay with M-Pesa and get delivery across Kenya.</p>
+  <a class="btn" href="#/products">Shop all items</a></div>
+  <div class="stack" aria-hidden="true">${[1,4,7,9].map(i=>`<span>${art(find(i))}</span>`).join("")}</div></section>
+  <section class="perks"><div><b>Students get 15% off</b>Use code ${STUDENT_CODE} at checkout with a valid ID.</div>
+  <div><b>Free delivery over ${kes(FREE_DELIVERY_OVER)}</b>Nairobi in 1-2 days, other towns in 2-4 days.</div>
+  <div><b>Easy exchanges</b>Wrong size or faulty item? We swap it.</div>
+  <div><b>Pay with M-Pesa</b>Cards and cash on delivery (Nairobi) also available.</div></section>
+  <h2>Popular right now</h2><div class="grid">${PRODUCTS.filter(p=>[1,4,7,9].includes(p.id)).map(card).join("")}</div>`;
+}
+
+function products(){
+  const cats = ["All",...new Set(PRODUCTS.map(p=>p.cat))];
+  return `<h1 style="padding-top:32px">All products</h1>
+  <div class="filters" role="group" aria-label="Filter by category">${cats.map((c,i)=>`<button aria-pressed="${i===0}" data-cat="${c}">${c}</button>`).join("")}</div>
+  <div class="grid" id="list">${PRODUCTS.map(card).join("")}</div>`;
+}
+function bindProducts(){
+  document.querySelectorAll(".filters button").forEach(b=>b.onclick=()=>{
+    document.querySelectorAll(".filters button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+    $("#list").innerHTML = PRODUCTS.filter(p=>b.dataset.cat==="All"||p.cat===b.dataset.cat).map(card).join("");
+  });
+}
+
+function product(id){
+  const p = find(id); if(!p) return notFound();
+  return `<p class="crumbs"><a href="#/products">Products</a> / ${p.cat} / ${p.name}</p>
+  <section class="detail"><div class="thumb" role="img" aria-label="${p.name}">${photo(p)}</div>
+  <div><span class="muted">${p.cat}</span><h1>${p.name}</h1><p class="price" style="font-size:1.6rem">${kes(p.price)}</p><p>${p.desc}</p>
+  <b id="sizelabel">Select size</b><div class="sizes" role="group" aria-labelledby="sizelabel">${p.sizes.map(s=>`<button aria-pressed="false">${s}</button>`).join("")}</div>
+  <p class="err" id="err" role="alert"></p>
+  <button class="btn" id="add">Add to cart</button>
+  <p class="muted" style="margin-top:16px">In stock. Delivery in 1-4 days. Exchanges accepted for wrong size or faulty items.</p></div></section>
+  <section class="reviews">${reviewBlock(p.id)}</section>`;
+}
+function bindProduct(id){
+  let size = null;
+  const btns = document.querySelectorAll(".sizes button");
+  if(btns.length===1){ size=btns[0].textContent; btns[0].setAttribute("aria-pressed","true"); }
+  btns.forEach(b=>b.onclick=()=>{ size=b.textContent; btns.forEach(x=>x.setAttribute("aria-pressed",x===b)); $("#err").textContent=""; });
+  $("#add").onclick=()=>{
+    if(!size){ $("#err").textContent="Pick a size before adding to cart."; return; }
+    addToCart(+id,size); location.hash="#/cart";
+  };
+}
+
+function cartView(){
+  if(!cart.length) return `<div class="done"><h1>Your cart is empty</h1><p>Browse the shop and add something you like.</p><a class="btn" href="#/products">Shop products</a></div>`;
+  const t = totals();
+  return `<h1 style="padding-top:32px">Your cart</h1>
+  <div style="overflow-x:auto"><table><thead><tr><th>Item</th><th>Size</th><th>Price</th><th>Qty</th><th>Total</th></tr></thead><tbody>
+  ${cart.map((i,k)=>{const p=find(i.id);return `<tr><td>${p.icon} ${p.name}</td><td>${i.size}</td><td>${kes(p.price)}</td>
+  <td><button data-k="${k}" data-d="-1" aria-label="Decrease quantity">-</button> ${i.qty} <button data-k="${k}" data-d="1" aria-label="Increase quantity">+</button></td><td>${kes(p.price*i.qty)}</td></tr>`}).join("")}</tbody></table></div>
+  <div class="summary"><label for="code" style="margin-top:0">Student code</label>
+  <div style="display:flex;gap:8px"><input id="code" placeholder="${STUDENT_CODE}" value="${promo?STUDENT_CODE:""}"><button class="btn dark" id="apply">Apply</button></div>
+  <p class="err" id="codemsg">${promo?'<span class="ok">15% student discount applied. Show your ID on delivery.</span>':""}</p>
+  <p><span>Subtotal</span><span>${kes(t.sub)}</span></p>
+  ${t.discount?`<p><span>Student discount</span><span>- ${kes(t.discount)}</span></p>`:""}
+  <p><span>Delivery</span><span>${t.delivery?kes(t.delivery):"Free"}</span></p>
+  <p class="muted">Delivery is calculated by town at checkout. Estimate shown for Nairobi.</p>
+  <p class="total"><span>Total</span><span>${kes(t.total)}</span></p>
+  <a class="btn" style="width:100%;text-align:center" href="#/checkout">${user?"Go to checkout":"Log in to check out"}</a></div>`;
+}
+function bindCart(){
+  document.querySelectorAll("td button").forEach(b=>b.onclick=()=>{
+    const i=cart[+b.dataset.k]; i.qty+=+b.dataset.d;
+    if(i.qty<1) cart.splice(+b.dataset.k,1);
+    save(); render();
+  });
+  const a=$("#apply"); if(a) a.onclick=()=>{
+    if($("#code").value.trim().toUpperCase()===STUDENT_CODE){ promo=true; render(); }
+    else $("#codemsg").textContent="That code is not valid. Check it and try again.";
+  };
+}
+
+function checkout(){
+  if(!cart.length) return cartView();
+  const t = totals();
+  return `<h1 style="padding-top:32px">Checkout</h1><div class="checkout">
+  <form id="form" novalidate>
+    <label for="name">Full name</label><input id="name" autocomplete="name" value="${esc(user?user.name:"")}" required>
+    <label for="phone">Phone number (M-Pesa)</label><input id="phone" inputmode="tel" placeholder="0712 345 678" autocomplete="tel" value="${esc(user?user.phone:"")}" required>
+    <label for="town">Town</label>
+    <select id="town"><option>Nairobi</option><option>Mombasa</option><option>Kisumu</option><option>Nakuru</option><option>Eldoret</option><option>Embu</option><option>Other</option></select>
+    <label for="addr">Delivery address or pickup point</label><input id="addr" autocomplete="street-address" required>
+    <label style="margin-top:18px">Payment method</label>
+    <div class="pay">
+      <label><input type="radio" name="pay" value="M-Pesa" checked> M-Pesa (STK push to your phone)</label>
+      <label><input type="radio" name="pay" value="Card"> Card (demo gateway)</label>
+      <label><input type="radio" name="pay" value="Cash on delivery"> Cash on delivery (Nairobi only)</label>
+    </div>
+    <p class="err" id="err" role="alert"></p>
+    <button class="btn" type="submit">Place order</button>
+  </form>
+  <aside class="summary" style="margin:0;max-width:none" aria-live="polite" id="side"></aside></div>`;
+}
+function sideSummary(){
+  const t = totals($("#town").value);
+  $("#side").innerHTML = `<b>Order summary</b>
+  ${cart.map(i=>{const p=find(i.id);return `<p><span>${p.name} (${i.size}) x${i.qty}</span><span>${kes(p.price*i.qty)}</span></p>`}).join("")}
+  ${t.discount?`<p><span>Student discount</span><span>- ${kes(t.discount)}</span></p>`:""}
+  <p><span>Delivery</span><span>${t.delivery?kes(t.delivery):"Free"}</span></p>
+  <p class="total"><span>Total</span><span>${kes(t.total)}</span></p>`;
+}
+function bindCheckout(){
+  if(!$("#form")) return;
+  sideSummary(); $("#town").onchange=sideSummary;
+  $("#form").onsubmit=e=>{
+    e.preventDefault();
+    const name=$("#name").value.trim(), phone=$("#phone").value.replace(/\s/g,""), town=$("#town").value, addr=$("#addr").value.trim();
+    const pay=document.querySelector("input[name=pay]:checked").value;
+    const err=m=>{$("#err").textContent=m;};
+    if(!name||!addr) return err("Enter your name and delivery address.");
+    if(!/^(?:\+?254|0)[17]\d{8}$/.test(phone)) return err("Enter a valid Kenyan phone number, e.g. 0712345678.");
+    if(pay==="Cash on delivery" && town!=="Nairobi") return err("Cash on delivery is only available in Nairobi. Choose M-Pesa or Card.");
+    const t=totals(town), ref="USC"+Math.floor(100000+Math.random()*900000);
+    const order={ref,name,phone,town,pay,total:t.total,eta:town==="Nairobi"?"1-2 days":"2-4 days"};
+    cart=[]; promo=false; save(); sessionStorage.setItem("usc-order",JSON.stringify(order));
+    location.hash="#/done";
+  };
+}
+function done(){
+  let o; try{o=JSON.parse(sessionStorage.getItem("usc-order"));}catch(e){}
+  if(!o) return home();
+  const note = o.pay==="M-Pesa" ? `<div class="mpesa"><b>M-Pesa prompt (demo)</b><br>An STK push for ${kes(o.total)} would be sent to ${o.phone}. Enter your M-Pesa PIN to pay.</div>`
+    : o.pay==="Card" ? `<div class="mpesa"><b>Card payment (demo)</b><br>A payment gateway page would open here to take ${kes(o.total)}.</div>`
+    : `<div class="mpesa"><b>Cash on delivery</b><br>Pay ${kes(o.total)} to the rider when your order arrives.</div>`;
+  return `<section class="done"><div class="tick">✅</div><h1>Order placed, ${o.name.split(" ")[0]}!</h1>
+  <p>Your order number is <b>${o.ref}</b>. We will confirm by SMS/WhatsApp, pack within 24 hours and deliver to ${o.town} in ${o.eta}.</p>${note}
+  <a class="btn" href="#/products">Keep shopping</a></section>`;
+}
+const notFound = () => `<div class="done"><h1>Page not found</h1><a class="btn" href="#/">Back to home</a></div>`;
+
+// ---- ratings and feedback (id 0 = whole store) ----
+const SEED=[
+ {pid:0,name:"Wanjiru M.",stars:5,text:"Ordered on Monday and it reached me in Nairobi on Tuesday. M-Pesa payment was smooth.",date:"2026-10-04",demo:1},
+ {pid:0,name:"Kevin O.",stars:4,text:"Good prices and the size guide helped. I would love more colours.",date:"2026-10-19",demo:1},
+ {pid:1,name:"Brian K.",stars:5,text:"Soft cotton and a great fit for campus.",date:"2026-10-08",demo:1},
+ {pid:4,name:"Kevin O.",stars:4,text:"Jeans fit well after the first wash.",date:"2026-10-12",demo:1},
+ {pid:7,name:"Faith N.",stars:5,text:"Warm and comfy hoodie for cold evenings.",date:"2026-10-21",demo:1}];
+let reviews=load("usc-reviews",null); if(!Array.isArray(reviews)) reviews=SEED;
+const forP=pid=>reviews.filter(r=>r.pid===pid);
+const avg=a=>a.reduce((s,r)=>s+r.stars,0)/a.length;
+const stars=n=>"★".repeat(Math.round(n))+"☆".repeat(5-Math.round(n));
+function rate(pid){const a=forP(pid);return a.length?`<span class="stars" aria-label="Rated ${avg(a).toFixed(1)} out of 5">${stars(avg(a))} <small>${avg(a).toFixed(1)} (${a.length})</small></span>`:`<span class="muted">No ratings yet</span>`;}
+function reviewBlock(pid){
+  const a=forP(pid);
+  return `<h2>${pid?"Ratings and reviews":"What customers say about Urban Style"}</h2>
+  <p>${a.length?`<span class="stars big">${stars(avg(a))}</span> <b>${avg(a).toFixed(1)}</b> out of 5 from ${a.length} review${a.length>1?"s":""}`:"No reviews yet. Be the first to rate."}</p>
+  ${a.slice().reverse().map(r=>`<div class="rev"><span class="stars">${stars(r.stars)}</span> <b>${esc(r.name)}</b> <span class="muted">${esc(r.date)}</span><p style="margin:4px 0 0">${esc(r.text)}</p></div>`).join("")}
+  ${a.some(r=>r.demo)?'<p class="muted">Sample reviews are shown for this prototype.</p>':""}
+  <h3>${pid?"Rate this item":"Share your feedback"}</h3>
+  ${user?`<div class="rate-in" id="rin" role="group" aria-label="Your rating">${[1,2,3,4,5].map(n=>`<button type="button" data-s="${n}" aria-label="${n} star${n>1?"s":""}">☆</button>`).join("")}</div>
+  <label for="rtext">Your comment</label><textarea id="rtext" rows="3" maxlength="300"></textarea>
+  <p class="err" id="rerr2" role="alert"></p><button class="btn" id="rsend">Submit</button>`
+  :`<p>Please <a href="#/login" id="rlogin">log in</a> to leave a rating.</p>`}`;
+}
+function bindReview(pid){
+  const rl=$("#rlogin"); if(rl) rl.onclick=()=>{try{sessionStorage.setItem("usc-next",location.hash.slice(2));}catch(e){}};
+  const send=$("#rsend"); if(!send) return;
+  let s=0; const btns=document.querySelectorAll("#rin button");
+  btns.forEach(b=>b.onclick=()=>{s=+b.dataset.s;btns.forEach(x=>x.textContent=+x.dataset.s<=s?"★":"☆");$("#rerr2").textContent="";});
+  send.onclick=()=>{
+    const t=$("#rtext").value.trim(), n=user.name.split(" ");
+    if(!s) return void($("#rerr2").textContent="Tap a star to rate.");
+    if(t.length<5) return void($("#rerr2").textContent="Write a few words about your experience.");
+    reviews.push({pid,name:n[0]+(n[1]?" "+n[1][0]+".":""),stars:s,text:t,date:new Date().toISOString().slice(0,10)});
+    put("usc-reviews",reviews); render();
+  };
+}
+const feedbackView = () => `<h1 style="padding-top:32px">Customer feedback</h1><section class="reviews" style="padding-top:8px">${reviewBlock(0)}</section>`;
+
+// ---- log in / create account ----
+function loginView(){
+  if(user) return `<div class="done"><h1>You are logged in</h1><p>Signed in as ${esc(user.email)}.</p><a class="btn" href="#/products">Keep shopping</a></div>`;
+  const co=sessionStorage.getItem("usc-next")==="checkout";
+  return `<h1 style="padding-top:32px">${co?"Log in to complete your order":"Log in or create an account"}</h1>
+  ${co?"<p>Your cart is saved. Sign in to continue to checkout.</p>":""}
+  <div class="auth">
+   <form id="lform" novalidate><h2>Log in</h2>
+    <label for="le">Email</label><input id="le" type="email" autocomplete="email">
+    <label for="lp">Password</label><input id="lp" type="password" autocomplete="current-password">
+    <p class="err" id="lerr" role="alert"></p><button class="btn" type="submit">Log in</button></form>
+   <form id="rform" novalidate><h2>Create account</h2>
+    <label for="rn">Full name</label><input id="rn" autocomplete="name">
+    <label for="re">Email</label><input id="re" type="email" autocomplete="email">
+    <label for="rph">Phone number</label><input id="rph" inputmode="tel" placeholder="0712 345 678" autocomplete="tel">
+    <label for="rp">Password (6+ characters)</label><input id="rp" type="password" autocomplete="new-password">
+    <p class="err" id="rerr" role="alert"></p><button class="btn" type="submit">Create account</button></form>
+  </div>`;
+}
+function bindLogin(){
+  if(!$("#lform")) return;
+  const go=u=>{user=u;put("usc-user",u);updateNav();const n=sessionStorage.getItem("usc-next");sessionStorage.removeItem("usc-next");location.hash=n?"#/"+n:"#/";};
+  $("#lform").onsubmit=e=>{e.preventDefault();
+    const em=$("#le").value.trim().toLowerCase(), u=load("usc-users",[]).find(x=>x.email===em&&x.h===hp($("#lp").value));
+    if(!u) return void($("#lerr").textContent="Email or password is incorrect.");
+    go({name:u.name,phone:u.phone,email:u.email});};
+  $("#rform").onsubmit=e=>{e.preventDefault();
+    const name=$("#rn").value.trim(),em=$("#re").value.trim().toLowerCase(),ph=$("#rph").value.replace(/\s/g,""),pw=$("#rp").value,err=m=>{$("#rerr").textContent=m;},users=load("usc-users",[]);
+    if(!name) return err("Enter your full name.");
+    if(!/^\S+@\S+\.\S+$/.test(em)) return err("Enter a valid email address.");
+    if(!/^(?:\+?254|0)[17]\d{8}$/.test(ph)) return err("Enter a valid Kenyan phone number, e.g. 0712345678.");
+    if(pw.length<6) return err("Password must be at least 6 characters.");
+    if(users.some(x=>x.email===em)) return err("An account with this email already exists. Log in instead.");
+    users.push({name,phone:ph,email:em,h:hp(pw)}); put("usc-users",users);
+    go({name,phone:ph,email:em});};
+}
+
+// ---- router ----
+function render(){
+  const [,route="",arg]=location.hash.replace("#","").split("/");
+  if(route==="checkout"&&cart.length&&!user){try{sessionStorage.setItem("usc-next","checkout");}catch(e){} location.hash="#/login"; return;}
+  const views={"":home,products,product:()=>product(arg),cart:cartView,checkout,done,login:loginView,feedback:feedbackView};
+  $("#app").innerHTML=(views[route]||notFound)();
+  if(route==="products") bindProducts();
+  if(route==="product") bindProduct(arg);
+  if(route==="cart") bindCart();
+  if(route==="checkout") bindCheckout();
+  if(route==="login") bindLogin();
+  if(route==="feedback") bindReview(0);
+  if(route==="product") bindReview(+arg);
+  document.title=({"":"Home",products:"Products",product:(find(arg)||{}).name,cart:"Cart",checkout:"Checkout",done:"Order confirmed",login:"Log in",feedback:"Feedback"}[route]||"Not found")+" | Urban Style Clothing";
+  window.scrollTo(0,0); $("#app").focus({preventScroll:true});
+}
+window.addEventListener("hashchange",render);
+save(); updateNav(); render();
+</script>
+</body>
+</html>
